@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sample Website</title>
+  <link rel="stylesheet" href="h.css"/>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+  
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .logo img {
+    height: 70px; /* adjust size as needed */
+    width: auto;
+  }
+  
+  .nav-links {
+    flex: 1;
+    text-align: center;
+  }
+
+     .nav-links span {
+  color: #004aad;
+}
+
+  
+.nav-links a,
+.auth-buttons a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  transition: color 0.3s ease;
+}
+
+  /* Smooth underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #004aad;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link: green text + green underline */
+.nav-links a.active {
+  color: #004aad;
+}
+
+.nav-links a.active::after {
+  background-color: #004aad;
+  width: 100%;
+}
+
+  .auth-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .auth-buttons .login {
+    background-color: transparent;
+    border: 1px solid #004aad;
+    color: #004aad;
+  }
+  
+  
+  .signup {
+    background-color: #004aad;
+    color: white;
+    border: none;
+  }
+  
+  .signup:hover, .login:hover {
+    opacity: 0.8;
+  }
+  
+  .home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 50px;
+  }
+  
+  .home-text {
+    max-width: 50%;
+  }
+  
+
+  
+  .home-text p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .home-image img {
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 50px;
+  }
+  
+  .home-text {
+    max-width: 50%;
+  }
+  
+  .home-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #004aad; 
+  }
+  
+  .home-text p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .home-image img {
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .info-section {
+  padding: 40px 20px;
+  background-color: #004aad;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-container h2 {
+  color: white;
+
+}
+
+.info-image {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.info-text {
+  max-width: 600px;
+  color: white;
+}
+
+.info-text h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+   text-align: center;
+}
+
+.info-text p {
+  color: #ffffff;
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+  .announcement-section {
+  padding: 40px 50px;
+  background-color: #f4f4f4;
+}
+
+.announcement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.announcement {
+  background-color: #004aad;
+  color: white;
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.announcement .icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.announcement .content h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.announcement .content p {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.announcement-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #004aad;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="/CAPSTONE_LMS_EHS/assets/landingpage/ehslogo.png" alt="Logo"></div>
+    <nav class="nav-links">
+       <a href="/CAPSTONE_LMS_EHS/landingpage/homepage.html"><span>Home</span></a>
+       <a href="/CAPSTONE_LMS_EHS/landingpage/about.html">About Us</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/program.html">Program</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/contacts.html">Contacts</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/CAPSTONE_LMS_EHS/auth/login.php" class="signup">Login</a>
+    </div>
+  </header>
+
+  <main class="home-section"> 
+  <div class="home-text">
+    <h1>EUSEBIO HIGH SCHOOL LMS</h1>
+    <p>
+    Eusebio High School formerly known as Eusebio High School Rosario Annex has grown from a small high school 
+    situated at Maybunga Elementary School to a splurging annex into an independent large high school. At present Dr. 
+    Gilbert O. Inocencio leads and manages the 5, 441 leaners, 182 teaching personnel, and 33 non-teaching personnel of 
+    Eusebio High School. 
+    </p>
+  </div>
+  <div class="home-image">
+    <img src="/CAPSTONE_LMS_EHS/assets/landingpage/homeskul.png" alt="Sample Image" />
+  </div>
+</main>
+
+
+
+
+
+
+  </main>
+</body>
+</html>

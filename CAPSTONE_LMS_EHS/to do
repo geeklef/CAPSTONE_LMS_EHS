@@ -1,0 +1,37 @@
+prof
+COURSE.PHP  /
+CLASS GRADE /
+CLASS CODE  / 
+DELETE      /
+ATTENDANCELIST.PHP
+
+ADMIN 
+STUDENT.PHP
+PROF.PHP
+
+# --- Supabase config ---
+SUPABASE_URL = "https://fgsohkazfoskhxhndogu.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnc29oa2F6Zm9za2h4aG5kb2d1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MDQzNTgwMiwiZXhwIjoyMDc2MDExODAyfQ.3-WklcMwoYIS3VA2Gf5DAy-Rb1ttHvL_ebLrjnn3zkw"
+
+
+
+
+PERFORMANCE.PHP / 
+BINAGO NI DEYUZ PERO WALA PA KAY KEIN
+
+BAGONG PAALALA
+KEIN YUNG SA PERFORMANCE BAGUHIN MO YUNG QUARTER 1-4 DAPAT SA STUDENT YAN
+YUNG SA STUDENT COURSES NAG DUDUPLICATE (NABAGO MO YUNG CODE DITO KEIN YUNG MAPUPUNTA SA ALL)
+ sa retake quiz try mo, kailangan ng approval ng prof
+
+
+ ADMIN
+ yung sa excel sa may schedule di lumalabas pati yung pdf
+ nawala yung edit kein pero gumagana yung DELETE
+ tapos yung sa search kailangan course code yung nasesearch
+
+ tapos sa drop down naman di gumagana yung grade level
+
+
+ quiz/exam /
+ alisin yung score sa studen lagay sa prof

@@ -1,0 +1,130 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from xgboost import XGBClassifier
+import joblib
+import matplotlib.pyplot as plt
+import os
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+
+
+
+SUPABASE_URL = "https://fgsohkazfoskhxhndogu.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnc29oa2F6Zm9za2h4aG5kb2d1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0MzU4MDIsImV4cCI6MjA3NjAxMTgwMn0.EHpoxrGBEx9j2MYQPbhGo-l65hmfijmBBRY65xMVY7c"
+
+# Load dataset
+file_path = "C:\\xampp\\htdocs\\CAPSTONE_LMS_EHS\\ML_MODEL\\student_performance_data.xlsx"
+df = pd.read_excel(file_path)
+
+# --- DATA IMPROVEMENTS ---
+df['avg_score'] = (df['avg_activity_score'] + df['avg_quiz_score']) / 2
+
+# Behavioral metric (example: discipline score)
+df['behavioral_score'] = df['behavior_count'] * 2 - df['late_submission_count']
+
+# Target variable (pass/fail)
+df['will_pass'] = (
+    (df['avg_score'] > 75) &
+    (df['absent_rate'] < 25) &
+    (df['behavioral_score'] > 0)   # ✅ added behavioral condition
+).astype(int)
+
+# --- FEATURE ENGINEERING ---
+df['engagement_score'] = df['avg_activity_score'] + df['avg_quiz_score']
+df['penalty_score'] = df['late_submission_count'] * df['absent_rate']
+df['adjusted_behavior'] = df['behavior_count'] / (1 + df['late_submission_count'])
+
+# --- FEATURES + LABEL ---
+X = df[['avg_activity_score', 'avg_quiz_score', 'absent_rate',
+        'behavior_count', 'engagement_score', 'penalty_score',
+        'adjusted_behavior', 'behavioral_score']]
+y = df['will_pass']
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Model: XGBoost
+model = XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.1, random_state=42)
+model.fit(X_train, y_train)
+
+# Evaluation
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+
+
+print(f"✅ Model Accuracy: {accuracy:.2f}")
+print("📊 Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+print("\n📄 Classification Report:")
+print(classification_report(y_test, y_pred))
+
+# --- Accuracy Graph ---
+plt.figure(figsize=(4, 4))
+plt.bar(['Model Accuracy'], [accuracy], color='lightgreen')
+plt.ylim(0, 1)
+plt.title('Model Accuracy')
+plt.ylabel('Accuracy')
+plt.text(0, accuracy / 2, f"{accuracy*100:.2f}%", ha='center', fontsize=12, color='black')
+plt.tight_layout()
+plt.savefig("C:\\xampp\\htdocs\\CAPSTONE_LMS_EHS\\ML_MODEL\\model_accuracy_xgb.png")
+plt.show()
+print("📈 Accuracy chart saved as model_accuracy_xgb.png")
+
+
+# Save model
+model_path = "C:\\xampp\\htdocs\\CAPSTONE_LMS_EHS\\ML_MODEL\\pass_fail_model_xgb.pkl"
+joblib.dump(model, model_path)
+print(f"📁 Model saved as {model_path}")
+
+# -----------------------------
+# Feature importance (XGBoost) 
+# -----------------------------
+# You can choose importance_type = "weight", "gain", or "cover"
+booster = model.get_booster()
+importances_dict = booster.get_score(importance_type='weight')  # 'weight' shows all features
+importances = [importances_dict.get(f, 0) for f in X.columns]
+
+# Plot feature importance
+plt.figure(figsize=(8, 5))
+plt.barh(X.columns, importances, color='skyblue')
+plt.xlabel("Feature Importance (Split Count)")
+plt.title("Which Features Affect Pass/Fail the Most")
+plt.tight_layout()
+plt.savefig("C:\\xampp\\htdocs\\CAPSTONE_LMS_EHS\\ML_MODEL\\feature_importance_xgb.png")
+print("📊 Feature importance chart saved as feature_importance_xgb.png")
+
+
+
+# Compute confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Create a labeled version (for annotation)
+labels = [
+    ["True Negative", "False Positive"],
+    ["False Negative", "True Positive"]
+]
+
+# Combine count + label for better visualization
+annot_labels = [
+    [f"{labels[i][j]}\n{cm[i, j]}" for j in range(2)]
+    for i in range(2)
+]
+
+# Plot confusion matrix
+plt.figure(figsize=(6, 5))
+sns.heatmap(cm, annot=annot_labels, fmt='', cmap='Blues', cbar=False,
+            xticklabels=['Predicted: Fail', 'Predicted: Pass'],
+            yticklabels=['Actual: Fail', 'Actual: Pass'])
+plt.title('Confusion Matrix - XGBoost Model')
+plt.xlabel('Predicted Labels')
+plt.ylabel('Actual Labels')
+plt.tight_layout()
+
+# Save confusion matrix image
+conf_matrix_path = "C:\\xampp\\htdocs\\CAPSTONE_LMS_EHS\\ML_MODEL\\confusion_matrix_xgb.png"
+plt.savefig(conf_matrix_path)
+plt.show()
+print(f"🧩 Confusion matrix chart saved as {conf_matrix_path}")
+
+

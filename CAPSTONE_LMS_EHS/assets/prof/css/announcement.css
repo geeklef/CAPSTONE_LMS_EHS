@@ -1,0 +1,502 @@
+/* ===================== Reset & Base ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f9;
+}
+
+/* ===================== Sidebar ===================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #004aad;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+.sidebar .menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    color: rgb(202, 201, 201);
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .menu a.active {
+    color: white;
+    font-weight: 600;
+    position: relative;
+}
+
+.sidebar .menu a.active::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.sidebar .menu a .material-icons {
+    font-size: 22px;
+}
+
+/* ===================== Main Content ===================== */
+.main {
+    margin-left: 250px;
+    flex: 1;
+    padding: 20px;
+}
+
+.topbar {
+    background-color: #004aad;
+    padding: 20px;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.back-btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    margin-right: 10px;
+    color: white;
+}
+
+.back-btn .material-icons {
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+/* ===================== Filter Buttons ===================== */
+.filter-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.filter-btn:hover {
+    background-color: #ebf2ff;
+}
+
+.filter-btn.active {
+    background-color: #004aad;
+    color: white;
+}
+
+.filter-btn .material-icons {
+    font-size: 22px;
+}
+
+/* ===================== Task Cards ===================== */
+.task-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transition: all 0.2s ease;
+}
+
+.task-card.new-task {
+    background-color: #e8f0ff;
+    cursor: pointer;
+}
+
+.task-icon {
+    background-color: #ebf2ff;
+    color: #004aad;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-icon span {
+    font-size: 30px;
+}
+
+.task-content {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.task-content h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.task-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.task-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.task-meta {
+    position: relative;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    color: #555;
+    user-select: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+    background: #f2f2f2;
+}
+
+/* ===================== Modals ===================== */
+.modal {
+    display: none; /* hide all modals initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
+
+@keyframes fadeIn {
+    from {transform: translateY(-20px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #004aad;
+    text-align: center;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Quicksand', sans-serif;
+    resize: none;
+}
+
+.submit-btn {
+    margin-top: 15px;
+    width: 100%;
+    background: #004aad;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+.submit-btn:hover {
+    background: #003380;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #004aad;
+}
+
+/* ===================== File Overview ===================== */
+.file-overview {
+    margin-top: 10px;
+    background-color: #f8faff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.file-overview a {
+    color: #004aad;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.file-overview a:hover {
+    color: #003080;
+}
+
+/* ===================== Buttons ===================== */
+.cancel-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+}
+
+.cancel-btn:hover {
+    background-color: #ddd;
+}
+
+/* ===================== Utility ===================== */
+.questionnaire-btn {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    background-color: #e8f0ff;
+    color: #004aad;
+    border: 1px solid #004aad;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.questionnaire-btn:hover {
+    background-color: #004aad;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .main {
+    margin-left: 0;
+  }
+
+  .sidebar {
+    left: -260px;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .menu-btn {
+    display: block;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filter-buttons {
+    justify-content: center;
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-meta {
+    margin: 10px 0 0 0;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .filter-btn {
+    flex: 1 1 45%;
+    font-size: 14px;
+    padding: 8px 10px;
+    justify-content: center;
+  }
+
+  .task-content h4 {
+    font-size: 16px;
+  }
+
+  .task-content p {
+    font-size: 13px;
+  }
+
+  .file-name {
+    font-size: 13px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .task-meta {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin: 0;
+  }
+
+  .dropdown-menu {
+    right: 5px;
+    top: 35px;
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 600px) {
+  .task-meta {
+    top: 8px;
+    right: 8px;
+  }
+
+  .dropdown-menu {
+    top: 30px;
+    right: 5px;
+  }
+}

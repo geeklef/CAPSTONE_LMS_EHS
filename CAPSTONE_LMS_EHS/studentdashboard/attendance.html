@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LMS Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Quicksand", sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f7f9;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 250px;
+      background-color: #004aad;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-left: 40px;
+      margin-bottom: 40px;
+    }
+
+    .sidebar .menu a {
+      display: block;
+      padding: 10px 0;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .main {
+      margin-left: 250px;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .topbar {
+      background-color: #004aad;
+      padding: 20px;
+      color: white;
+      font-size: 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .rewards {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+     .btn {
+            background-color: #004aad;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px; 
+        }
+
+    .btn:hover {
+      background-color: #003c8f;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 15px;
+    }
+
+    .modal-content .btn {
+      margin-top: 15px;
+    }
+
+    .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  color: #555;
+  cursor: pointer;
+}
+
+    .status {
+        font-weight: bold;
+        color:rgb(165, 165, 165);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="profile">
+      <img src="abo.jpg" alt="Profile Image"
+        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-left: 40px;">
+      <h3>Gerrald Abo</h3>
+    </div>
+    <div class="menu">
+        <a href="userhome.html">Dashboard</a>
+      <a href="courses.html">Courses</a>
+      <a href="attendance.html">Attendance</a>
+      <a href="performance.html">Performance</a>
+      <a href="reminders.html">Reminders</a>
+      <a href="account.html">Account</a>
+      <a href="login.html">Logout</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">Class Attendance</div>
+
+    <div class="rewards">
+      <div>
+        <h4>Information Assurance II</h4>
+        <p>IT 103</p><br>
+        <p>Date: July 07, 2025</p>
+        <p>Time: 10:00AM - 10:15AM</p>
+        <p class="status">Status: Unmarked</p>
+      </div>
+      <button class="btn open-modal">Attendance</button>
+    </div>
+
+    <div class="rewards">
+      <div>
+        <h4>Web Systems and Technologies</h4>
+        <p>IT 103</p><br>
+        <p>Date: July 07, 2025</p>
+        <p>Time: 10:00AM - 10:15AM</p>
+        <p class="status">Status: Unmarked</p>
+      </div>
+      <button class="btn open-modal">Attendance</button>
+    </div>
+
+    <div class="rewards">
+      <div>
+        <h4>Web Systems and Technologies</h4>
+        <p>IT 103</p><br>
+        <p>Date: July 07, 2025</p>
+        <p>Time: 10:00AM - 10:15AM</p>
+        <p class="status">Status: Unmarked</p>
+      </div>
+      <button class="btn open-modal">Attendance</button>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="attendanceModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span> <!-- Moved here -->
+    <h3>Attendance</h3>
+    <p>Mark yourself if you are present</p>
+    <button class="btn" onclick="markAttendance()">Mark as Present</button>
+  </div>
+</div>
+
+
+  <script>
+    const modal = document.getElementById("attendanceModal");
+    const openButtons = document.querySelectorAll(".open-modal");
+    let currentRewardBox = null;
+
+    openButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.style.display = "flex";
+        currentRewardBox = btn.closest(".rewards");
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+   function markAttendance() {
+  if (currentRewardBox) {
+    const statusElement = currentRewardBox.querySelector(".status");
+    statusElement.textContent = "Status: Present";
+    statusElement.style.color = "green";
+    statusElement.style.fontWeight = "bold";
+  }
+
+  closeModal();
+}
+
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>

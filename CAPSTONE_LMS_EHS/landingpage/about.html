@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sample Website</title>
+  <link rel="stylesheet" href="about.css"/>
+
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+  
+  }
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+    }
+
+    .nav-links {
+      flex: 1;
+      text-align: center;
+    }
+
+     .nav-links span {
+  color:  #004aad;
+}
+
+  
+.nav-links a,
+.auth-buttons a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  transition: color 0.3s ease;
+}
+
+  /* Smooth underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #004aad;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link: green text + green underline */
+.nav-links a.active {
+  color: 004aad;
+}
+
+.nav-links a.active::after {
+  background-color: 004aad;
+  width: 100%;
+}
+
+  .auth-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .auth-buttons .login {
+    background-color: transparent;
+    border: 1px solid #004aad;
+    color: #004aad;
+  }
+
+  
+  
+  .signup {
+    background-color: #004aad;
+    color: white;
+    border: none;
+  }
+
+    .signup:hover, .login:hover {
+      opacity: 0.8;
+    }
+
+    .home-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 50px;
+    }
+
+    .home-text {
+      max-width: 50%;
+    }
+
+    .home-text h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .home-text p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .home-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .about-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .about-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #004aad; 
+    }
+    .about-section h1 {
+      color:#004aad;
+   
+    }
+
+    .about-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .image-scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 0 20px;
+      justify-content: flex-start;
+      scroll-behavior: smooth;
+    }
+
+    .image-scroll-container img {
+      width: 350px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+    </style>
+
+</head>
+<body>
+  <header>
+      <div class="logo"><img src="/CAPSTONE_LMS_EHS/assets/landingpage/ehslogo.png" alt="Logo"></div>
+    <nav class="nav-links">
+       <a href="/CAPSTONE_LMS_EHS/landingpage/homepage.html">Home</a>
+       <a href="/CAPSTONE_LMS_EHS/landingpage/about.html"><span>About Us</span></a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/program.html">Program</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/contacts.html">Contacts</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/CAPSTONE_LMS_EHS/auth/login.php" class="signup">Login</a>
+    </div>
+  </header>
+
+    <main>
+    <section class="about-section">
+      <h2>About Eusebio High School</h2>
+      <p>
+        As situations in school are slowly returning to normal. EHS is working on its way now to continue its growth 
+        not just in number but in all aspects to better serve its learners and its entire community. Technically, the 
+        school is already 46 years in existence but as “Eusebio High School” which assumed it’s independency as a separate 
+        school since April 14, 2004, it is 19 years old as of this school year. With the dynamism of it’s new leader, the 
+        visionary Dr. Gilbert O. Inocencio and with the concerted effort of the school’s entire work force, surely Eusebio 
+        High School is on its way to the highest possible standard it can reach.
+      </p>
+
+
+
+       
+      <div class="image-scroll-container">
+        <img src="/CAPSTONE_LMS_EHS/assets/landingpage/a1.jpg" alt="Image 1">
+        <img src="/CAPSTONE_LMS_EHS/assets/landingpage/a2.jpg" alt="Image 2">
+        <img src="/CAPSTONE_LMS_EHS/assets/landingpage/a3.jpg" alt="Image 3">
+        <img src="/CAPSTONE_LMS_EHS/assets/landingpage/a4.jpg" alt="Image 4">
+        <img src="/CAPSTONE_LMS_EHS/assets/landingpage/a5.jpg" alt="Image 4">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

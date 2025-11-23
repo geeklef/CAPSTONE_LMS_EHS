@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sample Website</title>
+  <link rel="stylesheet" href="contacts.css"/>
+ 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+  
+  }
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: center;
+}
+
+ .nav-links span {
+  color: #004aad;
+}
+
+  
+.nav-links a,
+.auth-buttons a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  transition: color 0.3s ease;
+}
+
+  /* Smooth underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #004aad;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link: green text + green underline */
+.nav-links a.active {
+  color: #004aad;
+}
+
+.nav-links a.active::after {
+  background-color: green;
+  width: 100%;
+}
+
+  .auth-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .auth-buttons .login {
+    background-color: transparent;
+    border: 1px solid #004aad;
+    color: #004aad;
+  }
+
+  
+  
+  .signup {
+    background-color: #004aad;
+    color: white;
+    border: none;
+  }
+.signup:hover, .login:hover {
+  opacity: 0.8;
+}
+
+.home-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 50px;
+}
+
+.home-text {
+  max-width: 50%;
+}
+
+.home-text h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.home-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.home-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 50px;
+
+  flex-wrap: wrap;
+}
+
+.contact-text {
+  flex: 1;
+  padding-right: 30px;
+  min-width: 300px;
+}
+
+.contact-text h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #004aad; 
+}
+
+.contact-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.contact-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.contact-image img {
+  width: 400px;
+  height: auto;
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+.form-container {
+  background-color: #004aad; 
+  padding: 30px 40px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-right: 35px;
+}
+
+.form-container h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-align: center;
+  color: white;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: white;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.full-width {
+  margin-bottom: 15px;
+}
+
+.full-width textarea {
+  width: 100%;
+  height: 120px;
+  resize: vertical;
+}
+
+button {
+  background-color: #ffffff;
+  color: #004aad; 
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.map-container {
+  margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+  </style>
+  
+</head>
+<body>
+  <header>
+        <div class="logo"><img src="/CAPSTONE_LMS_EHS/assets/landingpage/ehslogo.png" alt="Logo"></div>
+    <nav class="nav-links">
+       <a href="/CAPSTONE_LMS_EHS/landingpage/homepage.html">Home</a>
+       <a href="/CAPSTONE_LMS_EHS/landingpage/about.html">About Us</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/program.html">Program</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/contacts.html"><span>Contacts</span></a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/CAPSTONE_LMS_EHS/auth/login.php" class="signup">Login</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Get in Touch Section -->
+   <section class="contact-section">
+  <div class="contact-text">
+    <h2>Get in Touch</h2>
+    <p>We’d love to hear from you! Whether you have a question about our services, need assistance, or just want 
+    to share feedback — our team is ready to help. Fill out the form and we’ll get back to you as soon as possible.</p>
+
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.1794549548763!2d121.08584027487242!3d14.588847985896118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c7fa30dac3c7%3A0x5e2700ab066add8d!2sEusebio%20High%20School!5e0!3m2!1sen!2sph!4v1751348947032!5m2!1sen!2sph" 
+        width="96%" 
+        height="300" 
+        style="border:0; border-radius: 10px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h3>Send Us Your Concern</h3>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location">
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="message">Write your Concern</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
+
+
+  </main>
+</body>
+</html>

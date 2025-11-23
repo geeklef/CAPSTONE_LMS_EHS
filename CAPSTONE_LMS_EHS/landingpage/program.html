@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sample Website</title>
+  <link rel="stylesheet" href="guide.css"/>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+  
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .logo img {
+    height: 70px; /* adjust size as needed */
+    width: auto;
+  }
+  
+  .nav-links {
+    flex: 1;
+    text-align: center;
+  }
+  
+   .nav-links span {
+  color: #004aad;
+}
+
+  
+.nav-links a,
+.auth-buttons a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  transition: color 0.3s ease;
+}
+
+  /* Smooth underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #004aad;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link: green text + green underline */
+.nav-links a.active {
+  color: green;
+}
+
+.nav-links a.active::after {
+  background-color: green;
+  width: 100%;
+}
+
+  .auth-buttons a {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .auth-buttons .login {
+    background-color: transparent;
+    border: 1px solid #004aad;
+    color: #004aad;
+  }
+
+  
+  
+  .signup {
+    background-color: #004aad;
+    color: white;
+    border: none;
+  }
+  
+  .signup:hover, .login:hover {
+    opacity: 0.8;
+  }
+  
+  .home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 50px;
+  }
+  
+  .home-text {
+    max-width: 50%;
+  }
+  
+  .home-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .home-text p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .home-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .rrr-section {
+  padding: 60px 40px;
+
+  text-align: center;
+}
+
+.rrr-section {
+  color: #004aad; 
+}
+
+.rrr-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.rrr-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+
+.rrr-images img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.center-icon {
+  width: 100px;
+}
+
+.rrr-description {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rrr-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #e6f5f1;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 900px;
+}
+
+.circle {
+  min-width: 80px;
+  height: 80px;
+  background-color: #004aad;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.programs-section {
+  padding: 60px 40px;
+  background-color: #004aad;
+  text-align: center;
+}
+
+.programs-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff; 
+}
+
+.programs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.program-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 20px;
+  text-align: left;
+}
+
+.program-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.program-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.program-card p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rrr-description,
+  .programs {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+  </style>
+
+
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="/CAPSTONE_LMS_EHS/assets/landingpage/ehslogo.png" alt="Logo"></div>
+    <nav class="nav-links">
+       <a href="/CAPSTONE_LMS_EHS/landingpage/homepage.html">Home</a>
+       <a href="/CAPSTONE_LMS_EHS/landingpage/about.html">About Us</a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/program.html"><span>Program</span></a>
+      <a href="/CAPSTONE_LMS_EHS/landingpage/contacts.html">Contacts</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/CAPSTONE_LMS_EHS/auth/login.php" class="signup">Login</a>
+    </div>
+  </header>
+
+  <section class="rrr-section">
+  <h1 class="rrr-title">SENIOR HIGH SCHOOL STRANDS IN EHS</h1>
+  <div class="rrr-images">
+    <img src="/CAPSTONE_LMS_EHS/assets/landingpage/stem.png" alt="Reuse Image">
+    <img src="/CAPSTONE_LMS_EHS/assets/landingpage/abm.png" alt="Recycle Image">
+    <img src="/CAPSTONE_LMS_EHS/assets/landingpage/gas.png" alt="Recycle Image">
+    <img src="/CAPSTONE_LMS_EHS/assets/landingpage/humss.png" alt="Recycle Image">
+  </div>
+
+  <div class="rrr-description">
+    <div class="rrr-block">
+      <div class="circle">STEM</div>
+      <p>This strand focuses on advanced concepts in science, math, engineering, and technology. 
+        It prepares students for college courses like medicine, engineering, architecture, and computer science. 
+        It develops analytical thinking, problem-solving, and innovation skills.</p>
+    </div>
+    <div class="rrr-block">
+      <div class="circle">ABM</div>
+      <p>ABM is designed for students who are interested in business, entrepreneurship, economics, and management. 
+        It teaches skills in leadership, financial literacy, marketing, and business planning, ideal for future entrepreneurs, 
+        accountants, and business professionals.</p>
+    </div>
+    <div class="rrr-block">
+      <div class="circle">GAS</div>
+      <p>GAS offers a broad and flexible curriculum for students who are undecided about their future course. 
+        It combines subjects from the STEM, ABM, and HUMSS strands, making it a versatile option for various college programs. 
+        It enhances communication, critical thinking, and decision-making skills.</p>
+    </div>
+     <div class="rrr-block">
+      <div class="circle">HUMSS</div>
+      <p>HUMSS is for students interested in people, culture, society, and communication. It focuses on subjects like philosophy, 
+        literature, history, and political science. It is perfect for those planning to take up education, journalism, psychology,
+         law, or social work in college.</p>
+    </div>
+  </div>
+
+  
+</section>
+
+<!-- This is a comment
+<section class="programs-section">
+  <h2>OUR PROGRAMS</h2>
+  <div class="programs">
+    <div class="program-card">
+      <img src="c1.jpg" alt="Barangay Clean-Up">
+      <h3>Barangay Clean Up Drives</h3>
+      <p>Monthly clean-up events organized in partnership with local communities to promote environmental responsibility and teamwork.</p>
+    </div>
+    <div class="program-card">
+      <img src="c2.jpg" alt="Zero Waste Education">
+      <h3>Zero Waste Education Campaign</h3>
+      <p>Workshops, school visits, and public talks that teach residents how to reduce, reuse, and recycle effectively.</p>
+    </div>
+    <div class="program-card">
+      <img src="g4.jpg" alt="Waste Segregation Seminars">
+      <h3>Proper Waste Segregation Seminars</h3>
+      <p>Educational sessions that guide households and businesses on how to correctly sort biodegradable, recyclable, and hazardous waste.</p>
+    </div>
+  </div>
+</section>
+-->
+
+
+
+  
+</body>
+</html>
