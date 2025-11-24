@@ -107,7 +107,7 @@ $insert->execute([
 
 
 // --- Fetch profile image (optional) ---
-$profileImg = 'fuego.jpg'; // default image if none
+$profileImg = 'default_prof.jpg'; // default image if none
 try {
     $imageQuery = $conn->prepare("SELECT image_url FROM teacher_profile_images WHERE teacher_id = :teacher_id ORDER BY uploaded_at DESC LIMIT 1");
     $imageQuery->execute(['teacher_id' => $teacher_id]);
