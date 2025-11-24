@@ -518,25 +518,37 @@ function fetchTeachers() {
   // =============================
   // EDIT TEACHER
   // =============================
-  function openEditModal(teacherId) {
-    fetch(`../api/admin/admin_prof/get_prof_details.php?teacher_id=${teacherId}`)
-      .then(res => res.json())
-      .then(data => {
-        if(data.error){ alert(data.error); return; }
+function openEditModal(teacherId) {
+  fetch(`../api/admin/admin_prof/get_prof_details.php?teacher_id=${teacherId}`)
+    .then(res => res.json())
+    .then(data => {
 
-        document.getElementById('edit_teacher_id').value = data.teacher_id;
-        document.getElementById('edit_teacher_user').value = data.teacher_user;
-        document.getElementById('edit_password').value = data.teacher_pass;
-        document.getElementById('edit_first_name').value = data.first_name;
-        document.getElementById('edit_last_name').value = data.last_name;
-        document.getElementById('edit_email').value = data.email;
-        document.getElementById('edit_subject').value = data.subject_id;
-        document.getElementById('edit_department').value = data.department;
+      // Check server response
+      if (!data || data.status !== "success") {
+        alert("Failed to fetch teacher details.");
+        return;
+      }
 
-        document.getElementById('editModal').classList.add('modal-visible');
-      })
-      .catch(err => { console.error(err); alert('Failed to fetch teacher details.'); });
-  }
+      const t = data.teacher; // <-- FIXED
+
+      // Fill modal fields
+      document.getElementById('edit_teacher_id').value = t.teacher_id;
+      document.getElementById('edit_teacher_user').value = t.teacher_user;
+      document.getElementById('edit_password').value = t.teacher_pass;
+      document.getElementById('edit_first_name').value = t.first_name;
+      document.getElementById('edit_last_name').value = t.last_name;
+      document.getElementById('edit_email').value = t.email;
+      document.getElementById('edit_subject').value = t.subject_id;
+      document.getElementById('edit_department').value = t.department;
+
+      document.getElementById('editModal').classList.add('modal-visible');
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Failed to fetch teacher details.');
+    });
+}
+
 
   function saveEdit() {
     const formData = new FormData(document.getElementById('editForm'));
